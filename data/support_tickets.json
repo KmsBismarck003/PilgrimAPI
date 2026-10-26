@@ -1,0 +1,28 @@
+[
+  {
+    "id": "TKT-SUP-0CBFA238",
+    "category_id": "cat_events",
+    "category_title": "Eventos y Asientos",
+    "subject": "Consulta sobre cartelera",
+    "description": "Quisiera saber los horarios de la funcion de gala",
+    "contact_email": "usuario.prueba@laikaclub.com",
+    "user_id": null,
+    "status": "PENDING",
+    "priority": "MEDIUM",
+    "created_at": "2026-10-25 20:09:29",
+    "sla_resolution_hours": 8
+  },
+  {
+    "id": "TKT-SUP-BC8A2D10",
+    "category_id": "cat_tickets",
+    "category_title": "Boletos y Accesos",
+    "subject": "Problema con QR",
+    "description": "Mi codigo QR no se visualiza correctamente en la app",
+    "contact_email": "usuario@ejemplo.com",
+    "user_id": null,
+    "status": "PENDING",
+    "priority": "MEDIUM",
+    "created_at": "2026-10-25 20:04:24",
+    "sla_resolution_hours": 4
+  }
+]
