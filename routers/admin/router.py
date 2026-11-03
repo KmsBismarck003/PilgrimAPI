@@ -31,9 +31,19 @@ admin_router.include_router(content_router)
 @admin_router.api_route("/api/analytics", methods=["GET", "POST", "DELETE", "PUT", "PATCH"])
 @admin_router.api_route("/api/analytics/{sub_path:path}", methods=["GET", "POST", "DELETE", "PUT", "PATCH"])
 async def analytics_proxy(request: Request, sub_path: str = "") -> Response:
-    """Enruta peticiones de Machine Learning hacia analytics."""
+    """Enruta peticiones de Machine Learning y Analítica hacia Big Data o Java Analytics."""
     target_path = f"/api/analytics/{sub_path}" if sub_path else "/api/analytics"
-    return await proxy_request(request, SERVICES["analytics"], target_path)
+    if (sub_path.startswith("matis") or 
+        sub_path.startswith("ml") or 
+        sub_path.startswith("vault") or
+        sub_path.startswith("scrape") or
+        sub_path in ["3d", "predict", "anomalies", "clean", "full", "incremental", "status"]):
+        return await proxy_request(request, SERVICES["analytics_bigdata"], target_path)
+    
+    resp = await proxy_request(request, SERVICES["analytics_bigdata"], target_path)
+    if resp.status_code == 404:
+        return await proxy_request(request, SERVICES["analytics"], target_path)
+    return resp
 
 @admin_router.api_route("/api/bigdata", methods=["GET", "POST", "DELETE", "PUT", "PATCH"])
 @admin_router.api_route("/api/bigdata/{sub_path:path}", methods=["GET", "POST", "DELETE", "PUT", "PATCH"])

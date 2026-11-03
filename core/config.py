@@ -16,7 +16,7 @@ SERVICES: Dict[str, str] = {
     "wearables": os.getenv("WEARABLES_SERVICE_URL", "http://127.0.0.1:8204"),
     "achievements": os.getenv("ACHIEVEMENTS_SERVICE_URL", "http://127.0.0.1:8301"),
     "analytics": os.getenv("ANALYTICS_SERVICE_URL", "http://127.0.0.1:8302"),
-    "analytics_bigdata": os.getenv("ANALYTICS_BIGDATA_URL", "http://127.0.0.1:8303"),
+    "analytics_bigdata": os.getenv("ANALYTICS_BIGDATA_SERVICE_URL", os.getenv("ANALYTICS_BIGDATA_URL", "http://127.0.0.1:8303")),
 }
 
 # Parámetros del servidor Pilgrim
